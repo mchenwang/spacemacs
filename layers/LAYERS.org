@@ -630,7 +630,7 @@ readme]]. In short, Treemacs offers:
 - Mouse interface for single and double left clicks in line with modern GUI
   standards (clicking on an icon will also display the file's tags).
 - Location awareness: commands like ~find-file~ or ~magit-status~ will use the
-  location of the node at point (with =$HOME= as fallback).
+  location of the node at point (with =$E_HOME= as fallback).
 - Optional fontifying of files based on their git status.
 - Optional collapsing of /single-dir-child/ directories into one.
 - Doing both asynchronously for an imperceptible performance cost.

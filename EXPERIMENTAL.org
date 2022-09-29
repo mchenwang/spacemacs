@@ -92,7 +92,7 @@ branch as the current branch:
 #+BEGIN_SRC shell
   ./autogen.sh
   # Pick one. The first one will install Emacs locally and the second one will install it globally.
-  ./configure --with-dbus --with-gnutls --with-imagemagick --with-rsvg  --with-mailutils --with-xml2 --with-modules --prefix="$HOME/.local"
+  ./configure --with-dbus --with-gnutls --with-imagemagick --with-rsvg  --with-mailutils --with-xml2 --with-modules --prefix="$E_HOME/.local"
   ./configure --with-dbus --with-gnutls --with-imagemagick --with-rsvg  --with-mailutils --with-xml2 --with-modules
   make
 #+END_SRC

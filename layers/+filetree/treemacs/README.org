@@ -38,7 +38,7 @@ readme]]. In short, Treemacs offers:
 - Mouse interface for single and double left clicks in line with modern GUI
   standards (clicking on an icon will also display the file's tags).
 - Location awareness: commands like ~find-file~ or ~magit-status~ will use the
-  location of the node at point (with =$HOME= as fallback).
+  location of the node at point (with =$E_HOME= as fallback).
 - Optional fontifying of files based on their git status.
 - Optional collapsing of /single-dir-child/ directories into one.
 - Doing both asynchronously for an imperceptible performance cost.
@@ -145,7 +145,7 @@ To use the `all-the-icons` theme rather than the default one, set the `treemacs-
 | Key binding | Description                                                                                                                                    |
 |-------------+------------------------------------------------------------------------------------------------------------------------------------------------|
 | ~M-0~       | Selected the treemacs window. Actually selects window #10, which is always assigned to treemacs.                                               |
-| ~SPC 0~     | Open treemacs in the current directory. When not visiting a file use $HOME as fallback. With a prefix arg manually select the root instead.    |
+| ~SPC 0~     | Open treemacs in the current directory. When not visiting a file use $E_HOME as fallback. With a prefix arg manually select the root instead.    |
 | ~SPC f B~   | Find and select a bookmark. If it cannot be found rebuild view with the bookmark's location as root. Also open the bookmark with a prefix arg. |
 | ~SPC f t~   | Hide/show existing treemacs buffer. Create one for the current directory if no buffer exists.                                                  |
 | ~SPC f T~   | Manually focus the treemacs view on the currently selected file. Not needed when =treemacs-follow-mode= is enabled.                            |

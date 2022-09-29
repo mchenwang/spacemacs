@@ -42,16 +42,16 @@ you can install Spacemacs with one line:
 
 * shell:
   ```sh
-  git clone https://github.com/syl20bnr/spacemacs $HOME/.emacs.d
+  git clone https://github.com/syl20bnr/spacemacs $E_HOME/.emacs.d
   ```
 
 * Windows PowerShell:
 
   ```powershell
-  git clone https://github.com/syl20bnr/spacemacs $HOME/.emacs.d
+  git clone https://github.com/syl20bnr/spacemacs $E_HOME/.emacs.d
   ```
 
-  If `HOME` is not set in environment or in registry:
+  If `E_HOME` is not set in environment or in registry:
 
   ```powershell
   git clone https://github.com/syl20bnr/spacemacs $env:APPDATA/.emacs.d
@@ -316,41 +316,41 @@ Last but not least there are a lot of high class tutorials available on YouTube:
 ## Default Install
 
 1. The default installation downloads Spacemacs to the `.emacs.d` directory in
-   your `HOME` directory.
+   your `E_HOME` directory.
 
-   But in the case of Windows, `HOME` is not set out-of-box. We recommend you to
+   But in the case of Windows, `E_HOME` is not set out-of-box. We recommend you to
    set it as an environment variable, with the same value as environment
    variable `HOMEPATH`, which usually looks like `C:\Users\<username>`.
 
-2. Since Spacemacs will now be downloaded at `$HOME/.emacs.d`, if it already
+2. Since Spacemacs will now be downloaded at `$E_HOME/.emacs.d`, if it already
    exists it'll be overridden.
 
-   Also, if you have either `$HOME/.emacs.el` or `$HOME/.emacs`, they will
+   Also, if you have either `$E_HOME/.emacs.el` or `$E_HOME/.emacs`, they will
    appear before Spacemacs in Emacs's initialization steps. Thus they must be
    renamed in order for Spacemacs to load correctly.
 
    To backup/rename the aforementioned files/directory, in shell:
 
    ```sh
-   [ -d $HOME/.emacs.d ] && mv $HOME/.emacs.d $HOME/.emacs.d.bak
-   [ -f $HOME/.emacs.el ] && mv $HOME/.emacs.el .emacs.el.bak
-   [ -f $HOME/.emacs ] && mv $HOME/.emacs $HOME/.emacs.bak
+   [ -d $E_HOME/.emacs.d ] && mv $E_HOME/.emacs.d $E_HOME/.emacs.d.bak
+   [ -f $E_HOME/.emacs.el ] && mv $E_HOME/.emacs.el .emacs.el.bak
+   [ -f $E_HOME/.emacs ] && mv $E_HOME/.emacs $E_HOME/.emacs.bak
    ```
 
     or in PowerShell:
 
     ```powershell
-    if( TestPath -Path $HOME/.emacs.d )
+    if( TestPath -Path $E_HOME/.emacs.d )
     {
-        Rename-Item $HOME/.emacs.d $HOME/.emacs.d.bak
+        Rename-Item $E_HOME/.emacs.d $E_HOME/.emacs.d.bak
     }
-    if( TestPath -Path $HOME/.emacs.el )
+    if( TestPath -Path $E_HOME/.emacs.el )
     {
-        Rename-Item $HOME/.emacs.el $HOME/.emacs.el.bak
+        Rename-Item $E_HOME/.emacs.el $E_HOME/.emacs.el.bak
     }
-    if( TestPath -Path $HOME/.emacs )
+    if( TestPath -Path $E_HOME/.emacs )
     {
-        Rename-Item $HOME/.emacs $HOME/.emacs.bak
+        Rename-Item $E_HOME/.emacs $E_HOME/.emacs.bak
     }
     ```
 
@@ -358,7 +358,7 @@ Last but not least there are a lot of high class tutorials available on YouTube:
    and PowerShell:
 
    ```sh
-   git clone https://github.com/syl20bnr/spacemacs $HOME/.emacs.d
+   git clone https://github.com/syl20bnr/spacemacs $E_HOME/.emacs.d
    ```
 
    In case you have a limited internet connection or limited speed:
@@ -377,22 +377,22 @@ Spacemacs is loaded:
 When Emacs is started, it looks for the init file
 [in a deterministic way][Emacs: Find Init]. The
 [default installation](#default-install) exploits it by occupying
-`$HOME/.emacs.d/init.el` and let Emacs use it as its init file.
+`$E_HOME/.emacs.d/init.el` and let Emacs use it as its init file.
 
 In other word, in default installation, Emacs find and load
-`$HOME/.emacs.d/init.el`, which is then responsible to load other files in
-`$HOME/.emacs.d`.
+`$E_HOME/.emacs.d/init.el`, which is then responsible to load other files in
+`$E_HOME/.emacs.d`.
 
 If you want to install Spacemacs to a different location, you need to make
 sure it's loaded by Emacs in one of its [init file][Emacs: Find Init].
 
-For example, if you've cloned Spacemacs to `$HOME/spacemacs`, and if you use
-`$HOME/.emacs.el` as Emacs init file, then the following lines in
-`$HOME/.emacs.el`:
+For example, if you've cloned Spacemacs to `$E_HOME/spacemacs`, and if you use
+`$E_HOME/.emacs.el` as Emacs init file, then the following lines in
+`$E_HOME/.emacs.el`:
 
 ```elisp
 ;; set variable `spacemacs-start-directory' to point to your Spacemacs
-;; installation location, "~" is equivalent to "$HOME"
+;; installation location, "~" is equivalent to "$E_HOME"
 (setq spacemacs-start-directory "~/.emacs.d/spacemacs")
 ;; load Spacemacs's initialization file
 (load-file (expand-file-name "init.el" spacemacs-start-directory))
@@ -405,7 +405,7 @@ For example, if you've cloned Spacemacs to `$HOME/spacemacs`, and if you use
    bootstrap.
 
 2. Once the bootstrap packages are installed, Spacemacs checks whether you have
-   an customization file `$HOME/.spacemacs`, known as `dotspacemacs`:
+   an customization file `$E_HOME/.spacemacs`, known as `dotspacemacs`:
 
    - If it already exists, Spacemacs loads it as the configuration.
    - Otherwise, you need to answer a few questions and Spacemacs will generate
@@ -424,10 +424,10 @@ For example, if you've cloned Spacemacs to `$HOME/spacemacs`, and if you use
    [quick start guide][QUICK_START.org] for more information.
 
 5. In case you want to store your `dotspacemacs` at another location, say
-   under `$HOME/.spacemacs.d`:
+   under `$E_HOME/.spacemacs.d`:
 
-   - First set the environment variable `SPACEMACSDIR` to `$HOME/.spacemacs.d`.
-   - Move `$HOME/.spacemacs` to `$HOME/.spacemacs.d/init.el`.
+   - First set the environment variable `SPACEMACSDIR` to `$E_HOME/.spacemacs.d`.
+   - Move `$E_HOME/.spacemacs` to `$E_HOME/.spacemacs.d/init.el`.
 
    In other word, set `SPACEMACSDIR` to the parent directory of your
    `dotspacemacs`, and move `dotspacemacs` to the said directory.

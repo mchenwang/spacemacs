@@ -538,11 +538,11 @@ the new configuration. This can be achieved easily using the following steps:
 #+BEGIN_SRC sh
   mkdir ~/spacemacs
   git clone https://github.com/syl20bnr/spacemacs.git ~/spacemacs/.emacs.d
-  HOME=~/spacemacs emacs
+  E_HOME=~/spacemacs emacs
 #+END_SRC
 
 If you're on Fish shell, you will need to modify the last command to:
-=env HOME=$HOME/spacemacs emacs=
+=env E_HOME=$E_HOME/spacemacs emacs=
 
 ** Make copy/paste working with the mouse in X11 terminals?
 It is possible to disable the mouse support in X11 terminals in order to

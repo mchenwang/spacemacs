@@ -16,7 +16,7 @@ abs_p() {
     [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
 }
 
-ln -s "$(pwd)" $HOME/.emacs.d
+ln -s "$(pwd)" $E_HOME/.emacs.d
 cp .github/workflows/scripts/dot_lock.el ~/.emacs.d/.lock
 
 testdir=$(abs_p tests/$1)

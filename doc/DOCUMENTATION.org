@@ -536,7 +536,7 @@ User configuration can be stored in your =~/.spacemacs= file.
 
 ** Dotfile Installation
 The very first time Spacemacs starts up, it will ask you several questions
-and then install the =.spacemacs= file in your =HOME= directory.
+and then install the =.spacemacs= file in your =E_HOME= directory.
 
 ** Alternative dotdirectory
 A dotdirectory =~/.spacemacs.d/= can be used instead of a dotfile.

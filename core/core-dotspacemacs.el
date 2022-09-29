@@ -45,7 +45,7 @@ their configuration.")
   "Directory containing Spacemacs customizations (defaults to nil).
 - If environment variable SPACEMACSDIR is set and the directory exists,
   use that value.
-- Otherwise use $HOME/.spacemacs.d if it exists.")
+- Otherwise use $E_HOME/.spacemacs.d if it exists.")
 
 (defconst dotspacemacs-filepath
   (let* ((spacemacs-dir-env (getenv "SPACEMACSDIR"))
@@ -63,7 +63,7 @@ their configuration.")
 - If environment variable SPACEMACSDIR is set and SPACEMACSDIR/init.el
   exists, use that value.
 - Otherwise use ~/.spacemacs if it exists.
-- Otherwise use $HOME/.spacemacs.d/init.el if it exists.")
+- Otherwise use $E_HOME/.spacemacs.d/init.el if it exists.")
 
 (spacemacs|defc dotspacemacs-distribution 'spacemacs
   "Base distribution to use. This is a layer contained in the directory
@@ -90,7 +90,7 @@ EXPERIMENTAL.org at the root of the git repository."
 portable dumper in the cache directory under dumps sub-directory.
 To load it when starting Emacs add the parameter `--dump-file'
 when invoking Emacs 27.1 executable on the command line, for instance:
-./emacs --dump-file=$HOME/.emacs.d/.cache/dumps/spacemacs-27.1.pdmp"
+./emacs --dump-file=$E_HOME/.emacs.d/.cache/dumps/spacemacs-27.1.pdmp"
   'string
   'spacemacs-dotspacemacs-init)
 
