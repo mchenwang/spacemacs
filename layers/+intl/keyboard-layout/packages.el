@@ -1,6 +1,6 @@
 ;;; packages.el --- keyboard-layout Layer Packages File for Spacemacs
 ;;
-;; Copyright (c) 2012-2022 Sylvain Benner & Contributors
+;; Copyright (c) 2012-2024 Sylvain Benner & Contributors
 ;;
 ;; Author: Fabien Dubosson <fabien.dubosson@gmail.com>
 ;; URL: https://github.com/syl20bnr/spacemacs
@@ -448,10 +448,7 @@
                        magit-module-commit-section-map
                        magit-stash-section-map
                        magit-stashes-section-map
-                       magit-tag-section-map
-                       magit-unpulled-section-map
-                       magit-unpushed-section-map
-                       magit-untracked-section-map))
+                       magit-tag-section-map))
       (kl/correct-keys map
         "j"
         "k"

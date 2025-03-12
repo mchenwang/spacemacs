@@ -1,24 +1,24 @@
 <a name="top" id="fork-destination-box"></a>
-<a href="https://develop.spacemacs.org"><img src="assets/spacemacs-badge.svg" alt="Made with Spacemacs" height="20"></a>
+<a href="https://spacemacs.org"><img src="assets/spacemacs-badge.svg" alt="Made with Spacemacs" height="20"></a>
 <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="assets/gplv3.png" alt="GPLv3 Software" align="right" height="20"></a>
 <a href="https://www.twitter.com/spacemacs"><img src="https://i.imgur.com/tXSoThF.png" alt="Twitter" align="right" height="20"></a>
 
 <!-- logo and links -->
 <p align="center"><img src="doc/img/title2.png" alt="Spacemacs"/></p>
 <p align="center">
-<b><a href="https://develop.spacemacs.org/doc/DOCUMENTATION#core-pillars">philosophy</a></b>
+<b><a href="https://spacemacs.org/doc/DOCUMENTATION#core-pillars">philosophy</a></b>
 |
-<b><a href="https://develop.spacemacs.org/doc/DOCUMENTATION#who-can-benefit-from-this">for whom?</a></b>
+<b><a href="https://spacemacs.org/doc/DOCUMENTATION#who-can-benefit-from-this">for whom?</a></b>
 |
-<b><a href="https://develop.spacemacs.org/doc/DOCUMENTATION#screenshots">screenshots</a></b>
+<b><a href="https://spacemacs.org/doc/DOCUMENTATION#screenshots">screenshots</a></b>
 |
-<b><a href="https://develop.spacemacs.org/doc/DOCUMENTATION.html">documentation</a></b>
+<b><a href="https://spacemacs.org/doc/DOCUMENTATION.html">documentation</a></b>
 |
 <b><a href="CONTRIBUTING.org">contribute</a></b>
 |
-<b><a href="https://develop.spacemacs.org/doc/DOCUMENTATION#achievements">achievements</a></b>
+<b><a href="https://spacemacs.org/doc/DOCUMENTATION#achievements">achievements</a></b>
 |
-<b><a href="https://develop.spacemacs.org/doc/FAQ">FAQ</a></b>
+<b><a href="https://spacemacs.org/doc/FAQ">FAQ</a></b>
 </p>
 
 
@@ -117,13 +117,13 @@ Last but not least there are a lot of high class tutorials available on YouTube:
 2. Spacemacs is an extension of a popular text editor called [Emacs][GNU Emacs].
    So you'll need Emacs installed first.
 
-   Spacemacs requires Emacs 27.1 or above. The development version of Emacs is
+   Spacemacs requires Emacs 28.2 or above. The development version of Emacs is
    not *officially* supported, but it should nevertheless be expected to work.
 
 3. [git][Git] is required to download and update Spacemacs.
 
-4. Tar, either [GNU Tar][] or [BSD Tar][], is required to install and update
-   Emacs packages used by Spacemacs.
+4. Tar, in particular [GNU Tar][], is required to install and update Emacs
+   packages used by Spacemacs.
 
 5. *(Optional)* The default font used by Spacemacs is [Source Code Pro][]. You
    may customize your own font settings and choose another font. If you want to
@@ -170,7 +170,7 @@ Last but not least there are a lot of high class tutorials available on YouTube:
    differences][Emacs And XEmacs].
 
    **N.B.** Some Linux distributions support only Emacs versions older than
-   27.1. In this case you should
+   28.2. In this case you should
    [build it from source][Build Emacs from Source] instead.
 
 3. Very likely Git is already installed on your system. Otherwise, you should
@@ -220,6 +220,14 @@ Last but not least there are a lot of high class tutorials available on YouTube:
       brew install emacs-plus --with-spacemacs-icon --with-native-comp
       ```
 
+      You will require the latest version of Xcode Command Line tools, which can be
+      downloaded from the [Apple Developer Portal](https://developer.apple.com/download/all/)
+      or by running the following command:
+
+      ```sh
+      softwareupdate --all --install --force
+      ```
+
    2. [Emacs Mac Port][] adds native GUI support to Emacs 28. And the full list
       of features is available [here][Emacs Mac Port features].
 
@@ -241,7 +249,12 @@ Last but not least there are a lot of high class tutorials available on YouTube:
    brew install git
    ```
 
-4. macOS ships with [BSD Tar][] so you don't need to install it.
+4. macOS ships with [BSD Tar][], but there are reports of weird issues so we
+   require [GNU Tar][] instead.
+
+   ```sh
+   brew install gnu-tar
+   ```
 
 5. *(Optional)* To install Source Code Pro Font:
 
@@ -260,9 +273,18 @@ Last but not least there are a lot of high class tutorials available on YouTube:
    ```
 
 ### Windows
+We recommend using wsl2 with wslg support especially with a pgtk build of emacs and wayland.
+For the installation please refer to the linux installation section. When running emacs
+within your wsl2 environment emacs will be handled like any other windows application.
 
-1. We recommend [Scoop][] as the package manager for Windows users. You can
-   install it via PowerShell:
+If this is not possible you can fallback to a native windows installation, however note
+that this will create a lot of subtle bugs especially with tls which we will most likely
+not be able to help with.
+
+If you need to follow that path we recommend to at least use a package manager like
+[Scoop][] to install the needed packages.
+
+1. You can install [Scoop][] via PowerShell:
 
    ```powershell
    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser # Optional: Needed to run a remote script the first time
@@ -283,11 +305,10 @@ Last but not least there are a lot of high class tutorials available on YouTube:
    scoop install git
    ```
 
-4. Windows 10 build 17063 and later ships with [BSD Tar][] and you won't need to
-   install it manually.
-
-   If you're running an earlier version of Windows, Tar can be installed in
-   PowerShell:
+4. Windows 10 build 17063 and later ships with [BSD Tar][], but it's required to
+   install [GNU Tar][] instead to avoid possible issues. Alternatively, if
+   you are running an earlier version of Windows, Tar isn't installed. In either
+   case, you can install GNU Tar via:
 
    ```powershell
    scoop bucket add main
@@ -340,15 +361,15 @@ Last but not least there are a lot of high class tutorials available on YouTube:
     or in PowerShell:
 
     ```powershell
-    if( TestPath -Path $HOME/.emacs.d )
+    if( Test-Path -Path $HOME/.emacs.d )
     {
         Rename-Item $HOME/.emacs.d $HOME/.emacs.d.bak
     }
-    if( TestPath -Path $HOME/.emacs.el )
+    if( Test-Path -Path $HOME/.emacs.el )
     {
         Rename-Item $HOME/.emacs.el $HOME/.emacs.el.bak
     }
-    if( TestPath -Path $HOME/.emacs )
+    if( Test-Path -Path $HOME/.emacs )
     {
         Rename-Item $HOME/.emacs $HOME/.emacs.bak
     }
@@ -386,16 +407,13 @@ In other word, in default installation, Emacs find and load
 If you want to install Spacemacs to a different location, you need to make
 sure it's loaded by Emacs in one of its [init file][Emacs: Find Init].
 
-For example, if you've cloned Spacemacs to `$HOME/spacemacs`, and if you use
+For example, if you've cloned Spacemacs to `$HOME/Spacemacs`, and if you use
 `$HOME/.emacs.el` as Emacs init file, then the following lines in
 `$HOME/.emacs.el`:
 
 ```elisp
-;; set variable `spacemacs-start-directory' to point to your Spacemacs
-;; installation location, "~" is equivalent to "$HOME"
-(setq spacemacs-start-directory "~/.emacs.d/spacemacs")
-;; load Spacemacs's initialization file
-(load-file (expand-file-name "init.el" spacemacs-start-directory))
+;; load Spacemacs's initialization file, "~" is equivalent to "$HOME"
+(load-file "~/Spacemacs/init.el")
 ```
 
 # First Launch and Configuration
@@ -447,10 +465,9 @@ Dock][icon-mac-instructions].
 ## Notes
 
 - Depending on the installed version of GnuTLS, securely installing Emacs
-  packages may fail. It may also fail if you have a bad internet environment.
-  In either case it is possible to install packages using `emacs --insecure`.
-  However be aware that this means your packages will be transferred using HTTP,
-  use at your own risk.
+  packages may fail. If this happens to you please update your OS and Emacs.
+  If you are behind a company proxy please trust the company firewall cert.
+  We do not longer support disabling https due to security reasons.
 
 - (*Windows)* If the following error occurs after starting Emacs:
 
@@ -476,17 +493,10 @@ Dock][icon-mac-instructions].
 
 # Update
 
-Spacemacs supports two different update schemes, the default is a rolling update
-scheme based on the latest version of packages available. This version can be
-found on the `develop` branch and is updated by a simple `git pull`.
+Spacemacs relies solely on a rolling update scheme based on the latest
+changes available. To update Spacemacs, simply pull the latest
+changes from the `develop` branch:
 
-The second method is deprecated. It was a fixed version scheme which was based
-on a stable set of packages. The latest fixed version can be found on the
-`master` branch and would show a notification when a new version is available.
-Be warned that this method has not been updated in a long time, so packages will
-be very old.
-
-## Rolling update (on develop)
 1. Close Emacs and update the git repository:
 
     ```sh
@@ -495,39 +505,17 @@ be very old.
 
 2. Restart Emacs to complete the upgrade.
 
-## Deprecated automatic update (on master branch)
-When a new version is available, a little arrow will appear in the mode-line.
-
-Its color depends on the number of versions that have been released since the
-last update. Green means that you have a recent version, orange and red means
-that you have an older version.
-
-![powerline_update](doc/img/powerline-update.png)
-
-Click on the arrow to update Spacemacs to the latest version.
-
-## Manual update (on master branch)
-Remove the `<` and `>` angle brackets when you're typing the lines below into
-your shell. Make sure to also replace the text: "tag version which you are
-updating to" with a tagged version. This page lists the [latest tags][]
-
-```sh
-git fetch
-git reset --hard <tag version which you are updating to>
-```
-
-## Revert to a specific release version (on master branch)
-To revert to a specific release version, just checkout the corresponding branch.
-For instance, the following command reverts Spacemacs to version `0.200`:
-
-```sh
-git checkout origin/release-0.200
-```
-
-**After updating Spacemacs (either manually or automatically), you should also
+**After updating Spacemacs, you should also
 check if any updates are available for your packages. On the Spacemacs Home
 Buffer <kbd>SPC b h</kbd>, click (press <kbd>RET</kbd>) on the `[Update
 Packages]` button, or use the convenient keybinding <kbd>SPC f e U</kbd>**
+
+## Upgrading from the deprecated `master` branch
+
+If you are still on the old `master` branch (i.e., if
+`git branch --show-current` shows `master` instead of `develop`),
+you need to [upgrade to `develop`](https://practical.li/spacemacs/reference/switch-to-develop/)
+first.
 
 # Quotes
 [Quote][quote01] by [ashnur](https://github.com/ashnur):
@@ -591,24 +579,24 @@ badge](#top).
 
 If you used Spacemacs in a project, and you want to show that fact, you can use
 the Spacemacs badge: [![Built with
-Spacemacs](https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg)](https://develop.spacemacs.org)
+Spacemacs](https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg)](https://spacemacs.org)
 
 - For Markdown:
 
    ```markdown
-   [![Built with Spacemacs](https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg)](https://develop.spacemacs.org)
+   [![Built with Spacemacs](https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg)](https://spacemacs.org)
    ```
 
 - For HTML:
 
    ```html
-   <a href="https://develop.spacemacs.org"><img alt="Built with Spacemacs" src="https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg" /></a>
+   <a href="https://spacemacs.org"><img alt="Built with Spacemacs" src="https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg" /></a>
    ```
 
 - For Org-mode:
 
    ```org
-   [[https://develop.spacemacs.org][file:https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg]]
+   [[https://spacemacs.org][file:https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg]]
    ```
 
 Thank you!
